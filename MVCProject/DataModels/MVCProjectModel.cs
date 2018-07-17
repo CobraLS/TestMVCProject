@@ -7,3 +7,77 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+
+public partial class MenuMaster
+{
+    public int MenuId { get; set; }
+    public string MenuName { get; set; }
+    public string MenuUrl { get; set; }
+    public Nullable<int> MenuParentId { get; set; }
+    public Nullable<bool> IsActive { get; set; }
+}
+
+public partial class Reign
+{
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public Reign()
+    {
+        this.UserManagements = new HashSet<UserManagement>();
+    }
+
+    public int ReignsId { get; set; }
+    public string Name { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<UserManagement> UserManagements { get; set; }
+}
+
+public partial class RoleMenuMapping
+{
+    public int RMId { get; set; }
+    public Nullable<int> RoleId { get; set; }
+    public string MenuId { get; set; }
+    public Nullable<bool> IsActive { get; set; }
+
+    public virtual UserRole UserRole { get; set; }
+}
+
+public partial class UserManagement
+{
+    public int UId { get; set; }
+    public string UserName { get; set; }
+    public string UserPassword { get; set; }
+    public string UserEmail { get; set; }
+    public int UserRoleId { get; set; }
+    public int UserReignsId { get; set; }
+    public Nullable<bool> IsActive { get; set; }
+    public Nullable<bool> IsDelete { get; set; }
+    public string CBY { get; set; }
+    public Nullable<System.DateTime> CDate { get; set; }
+    public string MBY { get; set; }
+    public Nullable<System.DateTime> MDate { get; set; }
+
+    public virtual Reign Reign { get; set; }
+    public virtual UserRole UserRole { get; set; }
+}
+
+public partial class UserRole
+{
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public UserRole()
+    {
+        this.RoleMenuMappings = new HashSet<RoleMenuMapping>();
+        this.UserManagements = new HashSet<UserManagement>();
+    }
+
+    public int RoleId { get; set; }
+    public string RoleName { get; set; }
+    public bool IsActive { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<RoleMenuMapping> RoleMenuMappings { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<UserManagement> UserManagements { get; set; }
+}
