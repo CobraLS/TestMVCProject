@@ -7,28 +7,25 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MVCProject.DataModels
+using System;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+
+public partial class MVCProjectEntities : DbContext
 {
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Infrastructure;
-    
-    public partial class MVCProjectEntities : DbContext
+    public MVCProjectEntities()
+        : base("name=MVCProjectEntities")
     {
-        public MVCProjectEntities()
-            : base("name=MVCProjectEntities")
-        {
-        }
-    
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            throw new UnintentionalCodeFirstException();
-        }
-    
-        public virtual DbSet<MenuMaster> MenuMasters { get; set; }
-        public virtual DbSet<Reign> Reigns { get; set; }
-        public virtual DbSet<RoleMenuMapping> RoleMenuMappings { get; set; }
-        public virtual DbSet<UserManagement> UserManagements { get; set; }
-        public virtual DbSet<UserRole> UserRoles { get; set; }
     }
+
+    protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    {
+        throw new UnintentionalCodeFirstException();
+    }
+
+    public virtual DbSet<MenuMaster> MenuMasters { get; set; }
+    public virtual DbSet<Reign> Reigns { get; set; }
+    public virtual DbSet<RoleMenuMapping> RoleMenuMappings { get; set; }
+    public virtual DbSet<UserManagement> UserManagements { get; set; }
+    public virtual DbSet<UserRole> UserRoles { get; set; }
 }
